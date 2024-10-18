@@ -55,9 +55,8 @@ class _SingleNoiseState extends State<SingleNoise> {
       width: .56.w(),
       height: height,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(1000),
-        color: Colors.red, /* widget.activeSliderColor */
-      ),
+          borderRadius: BorderRadius.circular(1000),
+          color: widget.activeSliderColor),
     );
   }
 }

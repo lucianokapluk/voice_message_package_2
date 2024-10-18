@@ -160,7 +160,7 @@ class VoiceMessageView extends StatelessWidget {
                   children: [
                     const SizedBox(height: 8),
                     _noises(newTHeme),
-                    const SizedBox(height: 1),
+                    const SizedBox(height: 4),
                     Text(controller.remindingTime, style: counterTextStyle),
                   ],
                 ),
