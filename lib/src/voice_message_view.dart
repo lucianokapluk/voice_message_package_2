@@ -214,7 +214,7 @@ class VoiceMessageView extends StatelessWidget {
                   },
                   child: Noises(
                     rList: controller.randoms!,
-                    activeSliderColor: Colors.transparent,
+                    activeSliderColor: notActiveSliderColor!,
                   ),
                 ),
               ),

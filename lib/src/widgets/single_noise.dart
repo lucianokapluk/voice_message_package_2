@@ -47,8 +47,6 @@ class _SingleNoiseState extends State<SingleNoise> {
   }
 
   @override
-
-  /// Build the widget.
   Widget build(BuildContext context) {
     return Container(
       /*   margin: EdgeInsets.symmetric(horizontal: .2.w()), */

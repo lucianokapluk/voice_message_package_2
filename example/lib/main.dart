@@ -54,7 +54,7 @@ class MyHomePage extends StatelessWidget {
                     circlesColor: Colors.black,
                     backgroundColor: Colors.blue,
                     activeSliderColor: Colors.black,
-                    notActiveSliderColor: Colors.amber,
+                    notActiveSliderColor: Colors.white,
                     size: 50,
                     playIcon: const Icon(
                       Icons.play_arrow,
