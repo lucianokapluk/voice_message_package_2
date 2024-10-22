@@ -231,12 +231,12 @@ class VoiceController extends MyTicker {
   void _listenToPlayerState() {
     playerStateStream = _player.playerStateStream.listen((event) async {
       if (event.processingState == ProcessingState.completed) {
-        // await _player.stop();
-        // currentDuration = Duration.zero;
-        // playStatus = PlayStatus.init;
-        // animController.reset();
-        // _updateUi();
-        // onComplete(id);
+        await _player.stop();
+        currentDuration = Duration.zero;
+        playStatus = PlayStatus.init;
+        animController.reset();
+        _updateUi();
+        /*  onComplete(id); */
       } else if (event.playing) {
         playStatus = PlayStatus.playing;
         _updateUi();

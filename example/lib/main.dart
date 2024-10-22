@@ -65,7 +65,7 @@ class MyHomePage extends StatelessWidget {
                         const TextStyle(color: Colors.white, fontSize: 11),
                     controller: VoiceController(
                         audioSrc:
-                            'https://dl.solahangs.com/Music/1403/02/H/128/Hiphopologist%20-%20Shakkak%20%28128%29.mp3',
+                            'https://firebasestorage.googleapis.com/v0/b/vectormgt-develop.appspot.com/o/chat%2Fnow%2F0:00:03.457000audio1729625934362?alt=media&token=37c1a306-22fd-490f-8dbe-19248e68f369',
                         maxDuration: const Duration(seconds: 10),
                         isFile: false,
                         onComplete: () {
