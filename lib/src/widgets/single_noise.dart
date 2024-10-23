@@ -12,8 +12,6 @@ class SingleNoise extends StatefulWidget {
     super.key,
     required this.activeSliderColor,
 /*     required this.height, */
-    required this.total,
-    required this.index,
   });
 
   /// The color of the active slider.
@@ -21,8 +19,7 @@ class SingleNoise extends StatefulWidget {
 
   /// The height of the noise.
 /*   final double height; */
-  final int total;
-  final int index;
+
   @override
   State<SingleNoise> createState() => _SingleNoiseState();
 }
@@ -34,16 +31,7 @@ class _SingleNoiseState extends State<SingleNoise> {
   void initState() {
     super.initState();
 
-    // Determinar si el índice está dentro de los primeros o últimos 5 elementos
-    bool isInEdgeRange = widget.index < 3 || widget.index >= widget.total - 4;
-
-    // Si está en los primeros o últimos 5, generar un valor pequeño
-    if (isInEdgeRange) {
-      height = (5);
-    } else {
-      // Generar un valor para el resto de los elementos
-      height = (5.74.w() * math.Random().nextDouble()) + .26.w();
-    }
+    height = (5.74.w() * math.Random().nextDouble()) + .26.w();
   }
 
   @override

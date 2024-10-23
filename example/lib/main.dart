@@ -65,8 +65,8 @@ class MyHomePage extends StatelessWidget {
                         const TextStyle(color: Colors.white, fontSize: 11),
                     controller: VoiceController(
                         audioSrc:
-                            'https://firebasestorage.googleapis.com/v0/b/vectormgt-develop.appspot.com/o/chat%2Fnow%2F0:00:03.457000audio1729625934362?alt=media&token=37c1a306-22fd-490f-8dbe-19248e68f369',
-                        maxDuration: const Duration(seconds: 10),
+                            'https://firebasestorage.googleapis.com/v0/b/vectormgt-develop.appspot.com/o/chat%2Fnow%2F0%3A00%3A03.343000audio1729705385558?alt=media&token=3d6588ab-874b-4bab-887a-c9c33d5c7419',
+                        maxDuration: const Duration(seconds: 4),
                         isFile: false,
                         onComplete: () {
                           /// do something on complete
@@ -80,7 +80,7 @@ class MyHomePage extends StatelessWidget {
                         onError: (err) {
                           /// do somethin on error
                         },
-                        noiseCount: 90),
+                        noiseCount: 72),
                   ),
                 ),
               ),

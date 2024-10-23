@@ -28,13 +28,8 @@ class Noises extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: rList
-            .asMap()
-            .entries
             .map(
               (entry) => SingleNoise(
-                total: rList
-                    .length, // Cambiado a totalCount para que coincida con el constructor
-                index: entry.key, // El índice del elemento
                 activeSliderColor: activeSliderColor,
                 /*   height: entry.value, // El valor correspondiente de la lista */
               ),

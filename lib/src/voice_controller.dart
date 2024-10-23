@@ -38,7 +38,7 @@ class VoiceController extends MyTicker {
   final Function() onPause;
   final Function(Object)? onError;
   final double noiseWidth = 100.w();
-  late AnimationController animController;
+
   final AudioPlayer _player = AudioPlayer();
   final bool isFile;
   final String? cacheKey;
@@ -92,11 +92,7 @@ class VoiceController extends MyTicker {
     this.cacheKey,
   }) {
     if (randoms?.isEmpty ?? true) _setRandoms();
-    animController = AnimationController(
-      vsync: this,
-      upperBound: noiseWidth,
-      duration: maxDuration,
-    );
+
     init();
     _listenToRemindingTime();
     _listenToPlayerState();
@@ -144,15 +140,12 @@ class VoiceController extends MyTicker {
     positionStream = _player.positionStream.listen((Duration p) async {
       if (!isDownloading) currentDuration = p;
 
-      final value = (noiseWidth * currentMillSeconds) / maxMillSeconds;
-      log(value);
-      animController.value = value;
       _updateUi();
       if (p.inMilliseconds >= maxMillSeconds) {
         await _player.stop();
         currentDuration = Duration.zero;
         playStatus = PlayStatus.init;
-        animController.reset();
+
         _updateUi();
         onComplete();
       }
@@ -185,7 +178,6 @@ class VoiceController extends MyTicker {
     await _player.dispose();
     positionStream?.cancel();
     playerStateStream?.cancel();
-    animController.dispose();
   }
 
   /// Seeks to the given [duration].
@@ -234,7 +226,7 @@ class VoiceController extends MyTicker {
         await _player.stop();
         currentDuration = Duration.zero;
         playStatus = PlayStatus.init;
-        animController.reset();
+
         _updateUi();
         /*  onComplete(id); */
       } else if (event.playing) {
@@ -288,10 +280,8 @@ class VoiceController extends MyTicker {
 
   /// Changes the speed of the voice playback.
   void onChanging(double d) {
-    print(d);
     currentDuration = Duration(milliseconds: d.toInt());
-    final value = (noiseWidth * d) / maxMillSeconds;
-    animController.value = value;
+
     _updateUi();
   }
 
@@ -316,8 +306,7 @@ class VoiceController extends MyTicker {
       final maxDuration =
           isFile ? await _player.setFilePath(path) : await _player.setUrl(path);
       if (maxDuration != null) {
-        this.maxDuration = maxDuration;
-        animController.duration = maxDuration;
+        this.maxDuration = Duration(seconds: maxDuration.inSeconds);
       }
     } catch (err) {
       if (kDebugMode) {
