@@ -100,7 +100,7 @@ class VoiceController extends MyTicker {
 
   /// Initializes the voice controller.
   Future init() async {
-    await setMaxDuration(audioSrc);
+    /*   await setMaxDuration(maxDuration); */
     _updateUi();
   }
 
@@ -303,11 +303,10 @@ class VoiceController extends MyTicker {
   Future setMaxDuration(String path) async {
     try {
       /// get the max duration from the path or cloud
-      final maxDuration =
-          isFile ? await _player.setFilePath(path) : await _player.setUrl(path);
-      if (maxDuration != null) {
-        this.maxDuration = Duration(seconds: maxDuration.inSeconds);
-      }
+      /*    final maxDuration =
+          isFile ? await _player.setFilePath(path) : await _player.setUrl(path); */
+      print("DURACION ASDASDSAADSASDASD ${maxDuration.inSeconds}");
+      maxDuration = Duration(seconds: maxDuration.inSeconds);
     } catch (err) {
       if (kDebugMode) {
         ///
