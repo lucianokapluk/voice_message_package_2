@@ -31,7 +31,7 @@ import 'package:voice_message_package/src/helpers/utils.dart';
 ///
 class VoiceController extends MyTicker {
   final String audioSrc;
-  late Duration maxDuration;
+  late int maxDuration;
   Duration currentDuration = Duration.zero;
   final Function() onComplete;
   final Function() onPlaying;
@@ -74,7 +74,7 @@ class VoiceController extends MyTicker {
 
   bool get isPause => playStatus == PlayStatus.pause;
 
-  double get maxMillSeconds => maxDuration.inMilliseconds.toDouble();
+  double get maxMillSeconds => maxDuration.toDouble();
 
   StreamSubscription<FileResponse>? downloadStreamSubscription;
 
@@ -288,13 +288,13 @@ class VoiceController extends MyTicker {
   ///
   String get remindingTime {
     if (currentDuration == Duration.zero) {
-      return maxDuration.formattedTime;
+      return Duration(milliseconds: maxDuration).formattedTime;
     }
     if (isSeeking || isPause) {
       return currentDuration.formattedTime;
     }
     if (isInit) {
-      return maxDuration.formattedTime;
+      return Duration(milliseconds: maxDuration).formattedTime;
     }
     return currentDuration.formattedTime;
   }
@@ -305,8 +305,8 @@ class VoiceController extends MyTicker {
       /// get the max duration from the path or cloud
       /*    final maxDuration =
           isFile ? await _player.setFilePath(path) : await _player.setUrl(path); */
-      print("DURACION ASDASDSAADSASDASD ${maxDuration.inSeconds}");
-      maxDuration = Duration(seconds: maxDuration.inSeconds);
+      print("DURACION ASDASDSAADSASDASD $maxDuration");
+      maxDuration = maxDuration;
     } catch (err) {
       if (kDebugMode) {
         ///
